@@ -4,8 +4,9 @@ A portfolio without a working contact form is just a gallery. This template is
 [vitepress-marketing](https://github.com/BootForm/vitepress-marketing)'s sibling, built for a
 freelancer or small studio: a home page, real case studies, and a form that actually reaches you.
 
-By the end you will have a home page, two example case studies, and a working contact form, built
-with [VitePress](https://vitepress.dev) and deployed automatically by GitHub Actions.
+By the end you will have a home page, eight example case studies in a generated grid, and a
+working contact form, built with [VitePress](https://vitepress.dev) and deployed automatically by
+GitHub Actions.
 
 **[See what you are building →](https://bootform.github.io/vitepress-portfolio/)**
 
@@ -65,16 +66,19 @@ Look for the lines marked `CHANGE ME`, across a few files:
 - **`docs/index.md`**: the home page. The `hero` and `features` blocks are plain YAML frontmatter.
   The "Selected work" cards below them, and the Work page's own grid, are both generated: neither
   needs editing when you add or remove a case study.
-- **`docs/work/checkout-redesign.md`** and **`docs/work/design-system.md`**: the two example case
-  studies. Each one's frontmatter (`title`, `description`, `image`, and an optional `link` to a
-  live site) is what shows up on its card; the markdown below that is the page itself, with the
-  same `image` reused as a hero banner at the top. The two images that ship with this template are
-  real photos, not mockups: free-to-use ([Unsplash License](https://unsplash.com/license), via
+- **`docs/work/*.md`**: eight example case studies, enough to see the grid at its full 4-column
+  width. Each one's frontmatter (`title`, `description`, `image`, and an optional `link` to a live
+  site) is what shows up on its card; the markdown below that is the page itself, with the same
+  `image` reused as a hero banner at the top. The images that ship with this template are real
+  photos, not mockups: free-to-use ([Unsplash License](https://unsplash.com/license), via
   [Picsum Photos](https://picsum.photos)), so the demo looks like a real site, but they're
-  standing in for actual screenshots of your own work. Replace them before this goes live.
+  standing in for actual screenshots of your own work. Replace them before this goes live. Delete
+  the ones you don't need; the grid and column count adjust automatically.
+- **`docs/contact.md`**: the hero heading, and the location, phone and email in the left-hand
+  info column (or delete any of those three blocks you don't want to list).
 
-**Adding a new case study:** copy one of the two example files, change its frontmatter and body,
-and you're done. It appears as a card on both the home page and the Work page automatically, with
+**Adding a new case study:** copy one of the example files, change its frontmatter and body, and
+you're done. It appears as a card on both the home page and the Work page automatically, with
 no other file to touch. Deleting a case study file removes its card the same way.
 
 > **Picking a colour is the hard part.** If you have no idea, `--color-brand-500: #2563eb` (a

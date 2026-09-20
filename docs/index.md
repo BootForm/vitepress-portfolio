@@ -35,13 +35,14 @@ import { data as work } from './work/work.data.ts'
      `image` frontmatter) and a card appears here and on the Work page automatically, with no
      other file to touch. <ProductCard> is a real reusable component (docs/.vitepress/theme/components),
      not a one-off; see AGENTS.md for why it uses withBase() internally on both its image and its
-     link. -->
+     link. Wider than the rest of the home page's sections (max-w-6xl, not max-w-3xl/max-w-2xl),
+     since a real 4-column row needs the room; a narrower container would cramp it. -->
 
-<div class="mx-auto max-w-3xl px-6 py-16">
+<div class="mx-auto max-w-6xl px-6 py-16">
 
 <h2 class="mb-6 text-2xl font-bold tracking-tight">Selected work</h2>
 
-<div class="grid gap-6 sm:grid-cols-2">
+<div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
   <ProductCard
     v-for="item in work"
     :key="item.url"
@@ -67,5 +68,23 @@ being confused.
 </blockquote>
 
 <p class="mt-4 text-sm opacity-50">(a happy client, not yet you)</p>
+
+</div>
+
+<!-- ───── Call to action ─────
+     A markdown-syntax link ([<span>...</span>](/contact)), not a raw <a href> or a Vue binding,
+     because the link text is a single styled inline element, not block-level content, the same
+     "put classes on an inline element inside link text" trick pricing.md uses in
+     vitepress-marketing, which still gets base-path handling for free since it's real markdown
+     link syntax underneath. See AGENTS.md's link-handling section for the other two cases this
+     doesn't cover. -->
+
+<div class="bg-brand-500/10 px-6 py-16 text-center">
+  <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Have a project in mind?</h2>
+  <p class="mx-auto mt-2 max-w-md opacity-70">
+    Tell me what you're building. I read every message myself and reply within a day or two.
+  </p>
+
+[<span class="mt-6 inline-block rounded-md bg-brand-500 px-6 py-3 font-medium text-white hover:bg-brand-600">Get in touch</span>](/contact)
 
 </div>

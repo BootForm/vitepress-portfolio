@@ -89,6 +89,19 @@ placeholder-for-convenience.
 The honeypot input must stay. It is hidden, unlabelled to screen readers, and filtering depends on
 it being submitted empty.
 
+**Every input needs a visible border and a focus ring, not just `outline-none`.** An early version
+of this form used `border-black/15`, faint enough to be hard to see against the page background,
+and relied on `focus:border-brand-500` alone for focus feedback. `border-black/30` (light) /
+`border-white/30` (dark) plus `focus:ring-2 focus:ring-brand-500/25` is the fixed version, and
+matches the convention `first-website`/`one-page-site` already use (`focus:ring-2
+focus:ring-accent/25`), so keep new form fields consistent with it.
+
+`contact.md` is two columns on a wide screen (`grid-cols-1 md:grid-cols-2`): contact details on
+the left (location with a plain Google Maps search link, phone, email, each an ordinary external
+`<a href>` so none of them need `withBase()`), the form on the right in its own bordered card.
+This page exists to make the case for BootForm's own form, not just host one, so it gets more
+visual treatment than a bare form would.
+
 ## Writing style
 
 - Second person, present tense, short sentences.

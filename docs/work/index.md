@@ -12,13 +12,14 @@ import { data as work } from './work.data.ts'
 
 <!-- This grid is generated at build time by work.data.ts (createContentLoader), not hand-written.
      Add a new case study file next to this one (with `title`, `description` and `image`
-     frontmatter) and it appears here, and on the home page, automatically. See AGENTS.md. -->
+     frontmatter) and it appears here, and on the home page, automatically. See AGENTS.md.
+     max-w-6xl, not max-w-3xl, since a real 4-column row needs the room. -->
 
-<div class="mx-auto max-w-3xl px-6 py-16">
+<div class="mx-auto max-w-6xl px-6 py-16">
 
 <h1 class="mb-8 text-3xl font-bold tracking-tight">Work</h1>
 
-<div class="grid gap-6 sm:grid-cols-2">
+<div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
   <ProductCard
     v-for="item in work"
     :key="item.url"
