@@ -19,7 +19,7 @@ defineProps<{
        component instead. -->
   <a
     :href="withBase(to)"
-    class="group flex flex-col overflow-hidden rounded-lg border border-black/10 transition hover:border-brand-500 dark:border-white/10"
+    class="group flex flex-col overflow-hidden rounded-lg border border-black/10 no-underline transition hover:border-brand-500 dark:border-white/10"
   >
     <img
       :src="withBase(image)"
@@ -27,8 +27,8 @@ defineProps<{
       class="aspect-video w-full object-cover"
     >
     <div class="flex flex-col gap-1 p-4">
-      <h3 class="font-semibold group-hover:text-brand-500">{{ title }}</h3>
-      <p class="text-sm opacity-70">{{ description }}</p>
+      <h3 class="font-semibold text-black group-hover:text-brand-500 dark:text-white">{{ title }}</h3>
+      <p class="text-sm leading-snug text-black/70 dark:text-white/70">{{ description }}</p>
     </div>
   </a>
 </template>

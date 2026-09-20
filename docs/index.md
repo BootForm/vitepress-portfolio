@@ -87,10 +87,10 @@ being confused.
      link syntax underneath. See AGENTS.md's link-handling section for the other two cases this
      doesn't cover. -->
 
-<div class="mx-auto max-w-3xl px-6 py-16">
-  <div class="rounded-2xl bg-brand-500 px-8 py-12 text-center shadow-lg sm:px-12 sm:py-16">
-    <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Have a project in mind?</h2>
-    <p class="mx-auto mt-3 max-w-md text-white/80">
+<div class="mx-auto max-w-6xl px-6 py-16">
+  <div class="rounded-2xl bg-brand-500 px-6 py-8 text-center shadow-lg sm:px-10 sm:py-10">
+    <h2 class="border-t-0! pt-0! text-2xl! font-bold! tracking-tight text-white sm:text-3xl!">Have a project in mind?</h2>
+    <p class="mx-auto! mt-3 max-w-md text-center text-white/80">
       Tell me what you're building. I read every message myself and reply within a day or two.
     </p>
 
