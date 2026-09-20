@@ -21,7 +21,7 @@ const { frontmatter } = useData()
 
 <p class="lead">{{ frontmatter.description }}</p>
 
-<a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white no-underline hover:bg-brand-600">
+<a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗
 </a>
 

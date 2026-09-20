@@ -72,19 +72,29 @@ being confused.
 </div>
 
 <!-- ───── Call to action ─────
-     A markdown-syntax link ([<span>...</span>](/contact)), not a raw <a href> or a Vue binding,
-     because the link text is a single styled inline element, not block-level content, the same
-     "put classes on an inline element inside link text" trick pricing.md uses in
-     vitepress-marketing, which still gets base-path handling for free since it's real markdown
+     A contained, elevated card (rounded-2xl, its own shadow), not a flat edge-to-edge tinted
+     band: the rest of the home page is a series of centered max-w-* sections, and a full-bleed
+     band broke that rhythm and read as flat rather than as a deliberate call to action. Solid
+     brand-colour background with an inverted (white background, brand-coloured text) button, the
+     one deliberate exception to "primary buttons are always bg-brand-500 with white text", since this
+     button sits ON a brand-coloured surface, so inverting it is what keeps it legible, not a
+     contradiction of that rule.
+
+     The link itself is still markdown syntax ([<span>...</span>](/contact)), not a raw <a href>
+     or a Vue binding, because the link text is a single styled inline element, not block-level
+     content: the same "put classes on an inline element inside link text" trick pricing.md uses
+     in vitepress-marketing, which still gets base-path handling for free since it's real markdown
      link syntax underneath. See AGENTS.md's link-handling section for the other two cases this
      doesn't cover. -->
 
-<div class="bg-brand-500/10 px-6 py-16 text-center">
-  <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Have a project in mind?</h2>
-  <p class="mx-auto mt-2 max-w-md opacity-70">
-    Tell me what you're building. I read every message myself and reply within a day or two.
-  </p>
+<div class="mx-auto max-w-3xl px-6 py-16">
+  <div class="rounded-2xl bg-brand-500 px-8 py-12 text-center shadow-lg sm:px-12 sm:py-16">
+    <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Have a project in mind?</h2>
+    <p class="mx-auto mt-3 max-w-md text-white/80">
+      Tell me what you're building. I read every message myself and reply within a day or two.
+    </p>
 
-[<span class="mt-6 inline-block rounded-md bg-brand-500 px-6 py-3 font-medium text-white hover:bg-brand-600">Get in touch</span>](/contact)
+[<span class="mt-6 inline-block rounded-md bg-white px-6 py-3 font-medium text-brand-600! hover:bg-white/90">Get in touch</span>](/contact)
 
+  </div>
 </div>
