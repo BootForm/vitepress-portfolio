@@ -6,10 +6,17 @@
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { withBase } from 'vitepress'
+import ProductCard from './components/ProductCard.vue'
 import './style.css'
 
 export default {
   extends: DefaultTheme,
+  // Registered globally so `<ProductCard>` works directly in markdown (index.md, work/index.md)
+  // with no import in either file, the same convention the real bootform.com marketing site
+  // uses for its own reusable components (PricingCards, HomeFeatures, and so on).
+  enhanceApp({ app }) {
+    app.component('ProductCard', ProductCard)
+  },
   Layout: () =>
     h(DefaultTheme.Layout, null, {
       'layout-bottom': () =>

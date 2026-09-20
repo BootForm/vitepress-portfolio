@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import { withBase } from 'vitepress'
+
+// A reusable card: an image, a title, a short description, and the whole card as one link to its
+// own page. Used on both the home page and the Work page, fed by work.data.ts. See that file's
+// own comment for how a new case study file becomes a new card automatically.
+defineProps<{
+  title: string
+  description: string
+  image: string
+  to: string
+}>()
+</script>
+
+<template>
+  <!-- Both `src` and `href` are runtime values here (props, not string literals in markdown), so
+       both need withBase() explicitly: see AGENTS.md's link-handling section. This is exactly
+       the same rule that applies to a plain markdown page's own dynamic links, just inside a
+       component instead. -->
+  <a
+    :href="withBase(to)"
+    class="group flex flex-col overflow-hidden rounded-lg border border-black/10 transition hover:border-brand-500 dark:border-white/10"
+  >
+    <img
+      :src="withBase(image)"
+      :alt="title"
+      class="aspect-video w-full object-cover"
+    >
+    <div class="flex flex-col gap-1 p-4">
+      <h3 class="font-semibold group-hover:text-brand-500">{{ title }}</h3>
+      <p class="text-sm opacity-70">{{ description }}</p>
+    </div>
+  </a>
+</template>

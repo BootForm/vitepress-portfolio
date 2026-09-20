@@ -62,11 +62,17 @@ Look for the lines marked `CHANGE ME`, across a few files:
   updates in both the header and the footer.
 - **`docs/.vitepress/theme/style.css`**: your brand colour. One value, used everywhere: buttons,
   links, VitePress's own accent colour.
-- **`docs/index.md`**: the home page. The `hero` and `features` blocks are plain YAML frontmatter,
-  and the "Selected work" cards below them link to your case studies.
+- **`docs/index.md`**: the home page. The `hero` and `features` blocks are plain YAML frontmatter.
+  The "Selected work" cards below them, and the Work page's own grid, are both generated: neither
+  needs editing when you add or remove a case study.
 - **`docs/work/checkout-redesign.md`** and **`docs/work/design-system.md`**: the two example case
-  studies. Replace them with your own work, and update `docs/work/index.md`'s list and the two
-  cards on the home page to match.
+  studies. Each one's frontmatter (`title`, `description`, `image`, and an optional `link` to a
+  live site) is what shows up on its card; the markdown below that is the page itself, with the
+  same `image` reused as a hero banner at the top.
+
+**Adding a new case study:** copy one of the two example files, change its frontmatter and body,
+and you're done. It appears as a card on both the home page and the Work page automatically, with
+no other file to touch. Deleting a case study file removes its card the same way.
 
 > **Picking a colour is the hard part.** If you have no idea, `--color-brand-500: #2563eb` (a
 > plain blue) is a safe default.
@@ -144,9 +150,14 @@ Open an [issue](https://github.com/BootForm/vitepress-portfolio/issues) and say 
 **The site deploys but looks completely unstyled.** `base` in `docs/.vitepress/config.mts` almost
 certainly doesn't match your actual repo name. See the note in Step 1.
 
-**A link on the home page goes nowhere, or 404s.** If you added a new "Selected work" card, make
-sure its `href` uses `withBase(...)`, not a plain string. See `AGENTS.md`'s link-handling section;
-this is the single easiest mistake to make on this page specifically.
+**A new case study doesn't show up as a card.** Check its frontmatter has `title`, `description`
+and `image` set, and that the file lives directly in `docs/work/` (not a subfolder), matching
+`work/work.data.ts`'s `work/*.md` pattern.
+
+**A card's image is broken, or a card links nowhere.** These are both built from runtime data
+(`ProductCard.vue`'s props), not markdown text, so if you're editing that component directly
+rather than just adding a case study file, see `AGENTS.md`'s link-handling section: both `:src`
+and `:href` need `withBase(...)`, not a plain string.
 
 **The form shows raw text instead of a nice page.** You are seeing the response as JSON. That is
 normal for now. Once you claim the form you can set a redirect so people land back on your site.

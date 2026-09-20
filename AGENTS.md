@@ -17,25 +17,25 @@ This repo hits every variant of the base-path problem `vitepress-marketing` and 
 each hit one of individually:
 
 - **A literal markdown link** (`[text](/work/)`) gets `base` handling automatically, at build
-  time. `work/index.md`'s list of case studies uses this, since it's plain text.
+  time. The "Back to all work" link in each case study uses this, since it's plain text.
 - **A raw HTML `<a href="/path">`** does not, and 404s once deployed to a subpath while working
   fine in `npm run dev`. Never write one for an internal link.
-- **A dynamic `:href` binding** (`:href="withBase('/work/checkout-redesign')"`) needs `withBase()`,
-  imported from `vitepress`, by hand. `index.md`'s "Selected work" cards use this, because they
-  wrap block-level content (a heading and a paragraph inside the link), which plain markdown link
-  syntax cannot do.
+- **A dynamic `:href` (or `:src`) binding built from runtime data** needs `withBase()`, imported
+  from `vitepress`, by hand: `ProductCard.vue`'s image and link, and each case study page's own
+  hero image (bound to `frontmatter.image`), are all this case. Neither goes through markdown-it's
+  link transform at all, since neither is markdown-syntax text.
 
-**`<router-link>` looked like the right tool for the "Selected work" cards and isn't.** It's
-vue-router's own component, global in a VitePress site, and in theory should resolve `to="..."` to
-a base-aware href the same way `withBase()` does. In practice, tried and confirmed on this exact
-page: both `<RouterLink>` and lowercase `<router-link>`, wrapping the same block-level card
-content, rendered as empty `<!---->` comment placeholders in the built HTML, no visible content,
-no error, no build warning. The working fix was the same `:href="withBase(...)"` pattern
-`vitepress-blog` already uses for its dynamic links, on a plain `<a>` instead. **If you're tempted
-to reach for `<router-link>` for a link wrapping more than plain text, don't: use `withBase()`
-directly, and verify by grepping the actual built `dist/` HTML for the real `href`, not by trusting
-that the page rendered without an error** (this failure mode produces literally nothing on the
-page, not visibly broken output, so a passing build and a glance at `npm run dev` both miss it).
+**`<router-link>` looked like the right tool for a card wrapping block-level content and isn't.**
+It's vue-router's own component, global in a VitePress site, and in theory should resolve `to="..."`
+to a base-aware href the same way `withBase()` does. In practice, tried and confirmed on an earlier
+version of this exact page: both `<RouterLink>` and lowercase `<router-link>`, wrapping a heading
+and a paragraph, rendered as empty `<!---->` comment placeholders in the built HTML, no visible
+content, no error, no build warning. `ProductCard.vue`'s `:href="withBase(to)"` is the fix that
+actually works. **If you're tempted to reach for `<router-link>` for a link wrapping more than
+plain text, don't: use `withBase()` directly, and verify by grepping the actual built `dist/` HTML
+for the real `href`, not by trusting that the page rendered without an error** (this failure mode
+produces literally nothing on the page, not visibly broken output, so a passing build and a glance
+at `npm run dev` both miss it).
 
 ## The constraints that define this repo
 
@@ -46,14 +46,29 @@ page, not visibly broken output, so a passing build and a glance at `npm run dev
   every built asset link needs to know that subpath at build time or it 404s in production while
   working fine in `npm run dev`.
 - **Tailwind via `@tailwindcss/vite`, plus `@tailwindcss/typography`**, installed from the start.
-  `work/index.md` and both example case studies are plain markdown prose, wrapped in `prose
-  dark:prose-invert`, the same reasoning `vitepress-marketing`'s `AGENTS.md` documents in full: a
-  markdown file's rendered headings, paragraphs and lists carry no classes at all, and Tailwind's
-  preflight reset strips their default browser styling, so without `prose` they render completely
-  flat.
-- **Two or three case studies, hand-maintained, not `vitepress-blog`'s generated list.** A
-  portfolio doesn't need tags, dates, pagination or RSS; that repo exists for when that's actually
-  the point. Don't add `createContentLoader`-based listing here.
+  Each case study's own body text is plain markdown prose, wrapped in `prose dark:prose-invert`,
+  the same reasoning `vitepress-marketing`'s `AGENTS.md` documents in full: a markdown file's
+  rendered headings, paragraphs and lists carry no classes at all, and Tailwind's preflight reset
+  strips their default browser styling, so without `prose` they render completely flat.
+- **The case study grid is generated, not hand-written.** `docs/work/work.data.ts` uses
+  `createContentLoader('work/*.md', ...)`, the same mechanism `vitepress-blog` uses for its post
+  list, scoped down to just `title`/`description`/`image` (no tags, dates, pagination or RSS; that
+  repo exists for when those are actually the point). Both the home page's "Selected work" section
+  and the Work page itself read from this one loader and `v-for` a `<ProductCard>` per entry.
+  **Adding a new case study means adding one `.md` file under `docs/work/` with `title`,
+  `description` and `image` frontmatter, and nothing else.** It appears on both pages
+  automatically, confirmed by actually adding a throwaway file and rebuilding while developing
+  this repo, not just by reading the loader code and assuming it works.
+- **`ProductCard.vue` (`docs/.vitepress/theme/components/`) is a real, original component**,
+  registered globally in `theme/index.ts`'s `enhanceApp` (the same convention the real
+  bootform.com marketing site uses for its own reusable components). It is not copied from any
+  third-party component library, CodyHouse included: plain Tailwind utility classes, no external
+  UI kit dependency. Keep it that way if you extend it.
+- **A case study's own page reuses its `image` frontmatter as a full-width hero banner**, above
+  the `prose`-wrapped body, via `frontmatter.image` bound through `useData()` and `withBase()`.
+  Its optional `link` frontmatter (an external URL, "visit the live site") renders as a button
+  right under the description if present, and is simply omitted (`v-if="frontmatter.link"`) if
+  not; it's an ordinary external absolute URL, so it never needs `withBase()` itself.
 - **The site-wide footer is a `theme/index.ts` override, not a `themeConfig.footer` entry**, and
   the logo is one file (`docs/public/logo.svg`) referenced twice by two different mechanisms (the
   header's built-in `logo:` config option, base-prefixed automatically; the footer's own `<img>`,

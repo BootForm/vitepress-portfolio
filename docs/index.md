@@ -25,31 +25,31 @@ features:
 ---
 
 <script setup>
-import { withBase } from 'vitepress'
+import { data as work } from './work/work.data.ts'
 </script>
 
 <!-- ───── Selected work ─────
-     Hand-written links, not a generated list. Two or three case studies is normal for a
-     portfolio; see AGENTS.md for why this repo doesn't reuse vitepress-blog's content-loader
-     approach. Uses a Vue binding (:href="withBase(...)"), not a raw <a href>, because these links
-     wrap block-level content (a heading and a paragraph), not plain text: a raw <a> would silently
-     404 once deployed to a subpath, and plain markdown link syntax can't wrap block content like
-     this. See AGENTS.md's link-handling section for the full explanation, including a
-     <router-link>-based approach that looks like it should work here and doesn't. -->
+     Generated at build time by work/work.data.ts (createContentLoader), the same mechanism
+     vitepress-blog uses for its post list, scoped down to image/title/description instead of that
+     repo's tags/dates/RSS. Add a new case study file under work/ (with `title`, `description` and
+     `image` frontmatter) and a card appears here and on the Work page automatically, with no
+     other file to touch. <ProductCard> is a real reusable component (docs/.vitepress/theme/components),
+     not a one-off; see AGENTS.md for why it uses withBase() internally on both its image and its
+     link. -->
 
 <div class="mx-auto max-w-3xl px-6 py-16">
 
 <h2 class="mb-6 text-2xl font-bold tracking-tight">Selected work</h2>
 
 <div class="grid gap-6 sm:grid-cols-2">
-  <a :href="withBase('/work/checkout-redesign')" class="flex flex-col gap-2 rounded-lg border border-black/10 p-5 hover:border-brand-500 dark:border-white/10">
-    <h3 class="font-semibold">Redesigning checkout for Northwind Goods</h3>
-    <p class="text-sm opacity-70">Cutting a 6-step checkout down to 2, and what broke along the way.</p>
-  </a>
-  <a :href="withBase('/work/design-system')" class="flex flex-col gap-2 rounded-lg border border-black/10 p-5 hover:border-brand-500 dark:border-white/10">
-    <h3 class="font-semibold">A design system three engineers could maintain</h3>
-    <p class="text-sm opacity-70">Building for a team with no dedicated design tooling budget.</p>
-  </a>
+  <ProductCard
+    v-for="item in work"
+    :key="item.url"
+    :title="item.title"
+    :description="item.description"
+    :image="item.image"
+    :to="item.url"
+  />
 </div>
 
 </div>

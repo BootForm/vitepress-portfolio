@@ -1,26 +1,34 @@
 ---
 # `layout: page` gives a plain page with no sidebar and no docs-style prose column width, the same
 # way the home page uses `layout: home`. Leave this frontmatter out and this becomes a regular docs
-# article instead, which is the exact mistake vitepress-marketing's AGENTS.md (and this repo's own)
-# warns against.
+# article instead, which is the exact mistake this whole template exists to prevent.
 layout: page
 title: Work
 ---
 
-<!-- `prose` (from @tailwindcss/typography) styles plain markdown (headings, paragraphs, lists,
-     links) without a class on every element. This list uses ordinary markdown link syntax
-     (`[text](url)`), not a Vue binding, because it's plain text, not the rich cards on the home
-     page; plain markdown links already get base-path handling for free at build time. See
-     AGENTS.md. -->
-<div class="prose dark:prose-invert mx-auto max-w-2xl px-6 py-16">
+<script setup>
+import { data as work } from './work.data.ts'
+</script>
 
-# Work
+<!-- This grid is generated at build time by work.data.ts (createContentLoader), not hand-written.
+     Add a new case study file next to this one (with `title`, `description` and `image`
+     frontmatter) and it appears here, and on the home page, automatically. See AGENTS.md. -->
 
-<!-- CHANGE ME: this list is hand-maintained, on purpose. A portfolio usually has a handful of
-     case studies, not enough to need vitepress-blog's generated post list, tags, and RSS. Add a
-     link here each time you add a case study file next to this one. -->
+<div class="mx-auto max-w-3xl px-6 py-16">
 
-- [Redesigning checkout for Northwind Goods](/work/checkout-redesign)
-- [A design system three engineers could maintain](/work/design-system)
+<h1 class="mb-8 text-3xl font-bold tracking-tight">Work</h1>
+
+<div class="grid gap-6 sm:grid-cols-2">
+  <ProductCard
+    v-for="item in work"
+    :key="item.url"
+    :title="item.title"
+    :description="item.description"
+    :image="item.image"
+    :to="item.url"
+  />
+</div>
+
+<p v-if="work.length === 0" class="opacity-60">No case studies yet.</p>
 
 </div>
