@@ -26,6 +26,11 @@ features:
 
 <script setup>
 import { data as work } from './work/work.data.ts'
+
+// The home page is a preview, not the full list: only the 4 most recent case studies show here,
+// the rest live on the Work page (linked below the grid). Add a new case study file and it
+// pushes onto the end of work.data.ts's list, so it's one of these 4 until a fifth is added.
+const recentWork = work.slice(-4)
 </script>
 
 <!-- ───── Selected work ─────
@@ -44,7 +49,7 @@ import { data as work } from './work/work.data.ts'
 
 <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
   <ProductCard
-    v-for="item in work"
+    v-for="item in recentWork"
     :key="item.url"
     :title="item.title"
     :description="item.description"
@@ -52,6 +57,12 @@ import { data as work } from './work/work.data.ts'
     :to="item.url"
   />
 </div>
+
+<p class="mt-6 text-center">
+
+[See all work](/work/)
+
+</p>
 
 </div>
 

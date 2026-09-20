@@ -110,6 +110,30 @@ visual treatment than a bare form would.
 - No AI attribution in commits or pull requests, here or anywhere else in this organisation.
 - Never claim BootForm offers EU data residency, a DPA, or an uptime SLA. It does not.
 
+## Tailwind utility classes losing to VitePress's/Tailwind's own element defaults
+
+Confirmed by inspecting the actual compiled `docs/.vitepress/dist/assets/*.css`: several base
+element resets in this build (`h1`-`h6`'s font-size/weight/margin, `p`'s margin, and
+`button,input,optgroup,select,textarea`'s border/padding/background) sit **outside** any
+`@layer` block, while Tailwind's own utility classes are generated inside `@layer utilities`.
+Per the CSS Cascade Layers spec, unlayered rules always beat layered ones, regardless of
+selector specificity or source order, so a heading or input styled only through a plain utility
+class (`text-2xl`, `mx-auto`, `border-gray-300`, `px-3`, `bg-white`, …) can silently lose to that
+reset and render as if the class weren't there at all. This is invisible in the editor and in a
+successful build, because there is no error. It's also inconsistent page to page: content
+wrapped in VitePress's own `.vp-doc` container (the home page's extra body content, a case
+study's `.prose` block) picks up VitePress's own larger/bolder heading and link styling instead,
+which can mask the same underlying issue there while it's fully visible elsewhere (the Work
+listing page, this page's own contact form inputs).
+
+**Fix: append `!` to the specific utility classes that need to win** (Tailwind v4's
+forced-`!important` syntax, e.g. `text-2xl!`, `mx-auto!`, `border-gray-300!`, `px-3!`,
+`bg-white!`), the same trick already used for `text-white!` on every primary button in this
+repo. Don't reach for this by default. It's only needed for the small set of properties those
+resets actually touch (font-size, font-weight, line-height, margin on headings/paragraphs;
+border, padding, background on form controls) and confirmed missing by checking the compiled
+CSS/computed styles, not assumed everywhere.
+
 ## Before changing anything
 
 Run `npm run build` locally before committing, and check the actual built HTML in

@@ -75,19 +75,19 @@ title: Contact
   <div class="flex flex-col gap-1">
     <label for="name" class="text-sm font-medium">Your name</label>
     <input id="name" name="name" type="text" required
-           class="rounded-md border border-gray-300 bg-white px-3 py-2 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600 dark:bg-white/5">
+           class="rounded-md border! border-gray-300! bg-white! px-3! py-2! outline-none focus:border-brand-500! focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600! dark:bg-white/5!">
   </div>
 
   <div class="flex flex-col gap-1">
     <label for="email" class="text-sm font-medium">Your email</label>
     <input id="email" name="email" type="email" required
-           class="rounded-md border border-gray-300 bg-white px-3 py-2 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600 dark:bg-white/5">
+           class="rounded-md border! border-gray-300! bg-white! px-3! py-2! outline-none focus:border-brand-500! focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600! dark:bg-white/5!">
   </div>
 
   <div class="flex flex-col gap-1">
     <label for="message" class="text-sm font-medium">What are you working on?</label>
     <textarea id="message" name="message" rows="4" required
-              class="rounded-md border border-gray-300 bg-white px-3 py-2 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600 dark:bg-white/5"></textarea>
+              class="rounded-md border! border-gray-300! bg-white! px-3! py-2! outline-none focus:border-brand-500! focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600! dark:bg-white/5!"></textarea>
   </div>
 
   <!-- A spam trap. Real people never see it, bots fill it in. Leave it alone. -->
