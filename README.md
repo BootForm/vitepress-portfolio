@@ -68,7 +68,10 @@ Look for the lines marked `CHANGE ME`, across a few files:
 - **`docs/work/checkout-redesign.md`** and **`docs/work/design-system.md`**: the two example case
   studies. Each one's frontmatter (`title`, `description`, `image`, and an optional `link` to a
   live site) is what shows up on its card; the markdown below that is the page itself, with the
-  same `image` reused as a hero banner at the top.
+  same `image` reused as a hero banner at the top. The two images that ship with this template are
+  real photos, not mockups: free-to-use ([Unsplash License](https://unsplash.com/license), via
+  [Picsum Photos](https://picsum.photos)), so the demo looks like a real site, but they're
+  standing in for actual screenshots of your own work. Replace them before this goes live.
 
 **Adding a new case study:** copy one of the two example files, change its frontmatter and body,
 and you're done. It appears as a card on both the home page and the Work page automatically, with

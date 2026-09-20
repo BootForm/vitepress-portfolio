@@ -2,9 +2,11 @@
 layout: page
 title: A design system three engineers could maintain
 # CHANGE ME: `description` shows on this case study's card, on both the home page and the Work
-# page. `image` is that same card's thumbnail, and this page's own hero banner below.
+# page. `image` is that same card's thumbnail, and this page's own hero banner below. The current
+# image is a real, freely-licensed photo (Unsplash, via Picsum Photos), not a screenshot of actual
+# work: swap it for one of your own before this goes live.
 description: Building for a team with no dedicated design tooling budget.
-image: /work/design-system.svg
+image: /work/design-system.jpg
 # CHANGE ME: an external link, "visit the live site" or similar. Delete this line (and the link
 # block below) if there's nothing public to link to.
 link: https://example.com
