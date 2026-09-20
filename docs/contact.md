@@ -7,8 +7,8 @@ title: Contact
      CHANGE ME: your own heading and subtitle. Kept short and low on the page on purpose: this
      page's job is the form below, not another pitch. -->
 <div class="bg-brand-500/10 px-6 py-16 text-center">
-  <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Let's talk about your project</h1>
-  <p class="mx-auto mt-3 max-w-xl opacity-70">
+  <h1 class="text-3xl! font-bold! tracking-tight sm:text-4xl!">Let's talk about your project</h1>
+  <p class="mx-auto! mt-3 max-w-xl text-center opacity-70">
     Tell me what you're working on. I read every message myself and reply within a day or two.
   </p>
 </div>
@@ -93,7 +93,7 @@ title: Contact
   <!-- A spam trap. Real people never see it, bots fill it in. Leave it alone. -->
   <input type="text" name="_honeypot" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
 
-  <button type="submit" class="self-start rounded-md bg-brand-500 px-5 py-2 font-medium text-white! hover:bg-brand-600">
+  <button type="submit" class="self-start rounded-md bg-brand-500! px-5! py-2! font-medium text-white! hover:bg-brand-600!">
     Send
   </button>
 </form>
