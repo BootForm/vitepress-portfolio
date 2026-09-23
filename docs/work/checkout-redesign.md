@@ -7,6 +7,7 @@ title: Redesigning checkout for Northwind Goods
 # work: swap it for one of your own before this goes live.
 description: Cutting a 6-step checkout down to 2, and what broke along the way.
 image: /work/checkout-redesign.jpg
+order: 6
 # CHANGE ME: an external link, "visit the live site" or similar. Delete this line (and the link
 # block below) if there's nothing public to link to.
 link: https://example.com

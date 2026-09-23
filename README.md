@@ -67,8 +67,9 @@ Look for the lines marked `CHANGE ME`, across a few files:
   The "Selected work" cards below them, and the Work page's own grid, are both generated: neither
   needs editing when you add or remove a case study.
 - **`docs/work/*.md`**: eight example case studies, enough to see the grid at its full 4-column
-  width. Each one's frontmatter (`title`, `description`, `image`, and an optional `link` to a live
-  site) is what shows up on its card; the markdown below that is the page itself, with the same
+  width. Each one's frontmatter (`title`, `description`, `image`, `order`, and an optional `link` to
+  a live site) is what shows up on its card, and `order` sets where it sits in the grid (the home
+  page shows the first 4); the markdown below that is the page itself, with the same
   `image` reused as a hero banner at the top. The images that ship with this template are real
   photos, not mockups: free-to-use ([Unsplash License](https://unsplash.com/license), via
   [Picsum Photos](https://picsum.photos)), so the demo looks like a real site, but they're
@@ -138,6 +139,9 @@ is meant to be used for this, not the docs-site defaults.
 
 ### Where to go next
 
+- [`add-collection`](https://github.com/BootForm/site-skills/tree/main/plugins/vitepress-sites/skills/add-collection)
+  to add a new kind of content (books, team members, events) with its own listing page and a
+  page per entry. Works with Claude Code, or as a step-by-step you can follow by hand.
 | | |
 |---|---|
 | **A blog** | [vitepress-blog](https://github.com/BootForm/vitepress-blog) if you want to write about your work too, with real post tags and RSS. |

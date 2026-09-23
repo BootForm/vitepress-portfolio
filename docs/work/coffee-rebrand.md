@@ -3,6 +3,7 @@ layout: page
 title: A brand refresh for Marrow Coffee Roasters
 description: Making a five-year-old logo look like it belongs on a bag people photograph.
 image: /work/coffee-rebrand.jpg
+order: 7
 link: https://example.com
 ---
 

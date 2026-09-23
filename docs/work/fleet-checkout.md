@@ -3,6 +3,7 @@ layout: page
 title: Redesigning checkout for Fleet, a food delivery app
 description: Cutting the time from "hungry" to "ordered" on a phone, not a desktop.
 image: /work/fleet-checkout.jpg
+order: 3
 link: https://example.com
 ---
 

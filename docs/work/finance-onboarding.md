@@ -3,6 +3,7 @@ layout: page
 title: Onboarding redesign for a personal finance app
 description: Getting someone to their first real number, not a tutorial, in under a minute.
 image: /work/finance-onboarding.jpg
+order: 2
 link: https://example.com
 ---
 

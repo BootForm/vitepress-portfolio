@@ -3,6 +3,7 @@ layout: page
 title: An accessibility audit for Harborview Health's patient portal
 description: Finding the fixes that actually mattered, not the whole checklist at once.
 image: /work/accessibility-audit.jpg
+order: 5
 link: https://example.com
 ---
 
