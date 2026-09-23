@@ -17,7 +17,7 @@ import { data as work } from './work.data.ts'
 
 <div class="mx-auto max-w-6xl px-6 py-16">
 
-<h1 class="mb-8 text-3xl font-bold tracking-tight">Work</h1>
+<h1 class="mb-8! text-3xl! font-bold! tracking-tight">Work</h1>
 
 <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
   <ProductCard
