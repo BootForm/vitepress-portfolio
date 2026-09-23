@@ -3,6 +3,7 @@ layout: page
 title: A content calendar tool for a five-person marketing team
 description: Replacing a shared spreadsheet nobody remembered to update.
 image: /work/content-calendar.jpg
+order: 8
 link: https://example.com
 ---
 

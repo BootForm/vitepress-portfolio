@@ -56,7 +56,8 @@ at `npm run dev` both miss it).
   repo exists for when those are actually the point). Both the home page's "Selected work" section
   and the Work page itself read from this one loader and `v-for` a `<ProductCard>` per entry.
   **Adding a new case study means adding one `.md` file under `docs/work/` with `title`,
-  `description` and `image` frontmatter, and nothing else.** It appears on both pages
+  `description`, `image` and `order` frontmatter, and nothing else.** `order` sorts the grid on
+  both pages; the home page shows the first 4. It appears on both pages
   automatically, confirmed by actually adding a throwaway file and rebuilding while developing
   this repo, not just by reading the loader code and assuming it works.
 - **`ProductCard.vue` (`docs/.vitepress/theme/components/`) is a real, original component**,
@@ -101,6 +102,16 @@ the left (location with a plain Google Maps search link, phone, email, each an o
 `<a href>` so none of them need `withBase()`), the form on the right in its own bordered card.
 This page exists to make the case for BootForm's own form, not just host one, so it gets more
 visual treatment than a bare form would.
+
+## Adding a new kind of content
+
+Want a section this template doesn't have yet, such as books, team members, events, or services?
+Use the `add-collection` skill from [`BootForm/site-skills`](https://github.com/BootForm/site-skills)
+(`/plugin marketplace add BootForm/site-skills`, then `/plugin install vitepress-sites@site-skills`).
+It copies a shared card component, an entry header, a data loader and a listing page into this
+repo, following every convention in this file, so each new entry afterwards is one markdown file.
+The same files and steps are readable without the plugin, under
+`plugins/vitepress-sites/skills/add-collection/` in that repo. Leave the existing case studies and `ProductCard` as they are; a new collection sits alongside them.
 
 ## Writing style
 

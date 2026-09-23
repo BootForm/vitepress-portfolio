@@ -3,6 +3,7 @@ layout: page
 title: An analytics dashboard for an indie game studio
 description: Turning a spreadsheet nobody trusted into a dashboard the whole team actually opened.
 image: /work/game-studio-dashboard.jpg
+order: 4
 link: https://example.com
 ---
 

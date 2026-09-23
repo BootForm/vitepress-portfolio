@@ -4,6 +4,7 @@ export interface WorkItem {
   title: string
   description: string
   image: string
+  order: number
   url: string
 }
 
@@ -24,7 +25,11 @@ export default createContentLoader('work/*.md', {
         title: frontmatter.title ?? 'Untitled',
         description: frontmatter.description ?? '',
         image: frontmatter.image ?? '',
+        order: frontmatter.order ?? 0,
         url,
       }))
+      // Frontmatter `order` keeps the list intentional (your best work first) instead of
+      // alphabetical by filename. The home page shows the first 4.
+      .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title))
   },
 })

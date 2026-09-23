@@ -27,10 +27,10 @@ features:
 <script setup>
 import { data as work } from './work/work.data.ts'
 
-// The home page is a preview, not the full list: only the 4 most recent case studies show here,
-// the rest live on the Work page (linked below the grid). Add a new case study file and it
-// pushes onto the end of work.data.ts's list, so it's one of these 4 until a fifth is added.
-const recentWork = work.slice(-4)
+// The home page is a preview, not the full list: only the first 4 case studies by their `order`
+// frontmatter show here, the rest live on the Work page (linked below the grid). Give a new case
+// study a low `order` to feature it here.
+const recentWork = work.slice(0, 4)
 </script>
 
 <!-- ───── Selected work ─────
