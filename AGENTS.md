@@ -145,6 +145,15 @@ resets actually touch (font-size, font-weight, line-height, margin on headings/p
 border, padding, background on form controls) and confirmed missing by checking the compiled
 CSS/computed styles, not assumed everywhere.
 
+**`prose` blocks are the one exception, handled once in `style.css`.** The same unlayered
+resets (VitePress's own `base.css`: `h1`-`h6` at 16px, `p` and lists with no margin, lists with no
+bullets, links with no colour) also flatten every `prose` block, and `!` can't fix that, because
+`prose` styles child elements the markdown gives you no class on. Confirmed live 2026-09-23: every
+`# Heading` in a `prose` wrapper rendered at body size, with no paragraph spacing. The last rule in
+`docs/.vitepress/theme/style.css` fixes it with `revert-layer`, handing exactly those properties
+back to the layered `prose` rules, scoped to `.prose` and skipping `not-prose`. Keep that rule;
+markdown inside a `prose` wrapper needs no `!` classes of its own.
+
 ## Before changing anything
 
 Run `npm run build` locally before committing, and check the actual built HTML in
