@@ -5,6 +5,9 @@ description: Replacing a shared spreadsheet nobody remembered to update.
 image: /work/content-calendar.jpg
 order: 8
 link: https://example.com
+client: Tillwick & Rowe
+role: Product design and prototyping
+year: 2022
 ---
 
 <script setup>
@@ -21,6 +24,8 @@ const { frontmatter } = useData()
 # A content calendar tool for a five-person marketing team
 
 <p class="lead">{{ frontmatter.description }}</p>
+
+<CaseFacts />
 
 <a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗

@@ -5,6 +5,9 @@ description: Getting someone to their first real number, not a tutorial, in unde
 image: /work/finance-onboarding.jpg
 order: 2
 link: https://example.com
+client: Puddlejump Money
+role: Product design
+year: 2025
 ---
 
 <script setup>
@@ -21,6 +24,8 @@ const { frontmatter } = useData()
 # Onboarding redesign for a personal finance app
 
 <p class="lead">{{ frontmatter.description }}</p>
+
+<CaseFacts />
 
 <a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗

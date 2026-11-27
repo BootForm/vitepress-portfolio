@@ -70,7 +70,10 @@ Look for the lines marked `CHANGE ME`, across a few files:
   width. Each one's frontmatter (`title`, `description`, `image`, `order`, and an optional `link` to
   a live site) is what shows up on its card, and `order` sets where it sits in the grid (the home
   page shows the first 4); the markdown below that is the page itself, with the same
-  `image` reused as a hero banner at the top. The images that ship with this template are real
+  `image` reused as a hero banner at the top. Three more optional fields, `client`, `role` and
+  `year`, show as a small facts row under the description on the case study's own page (for
+  example *Client: Marrow Coffee Roasters · Role: Brand and packaging · 2025*). Leave out any you
+  don't want; leave out all three and the row disappears. The images that ship with this template are real
   photos, not mockups: free-to-use ([Unsplash License](https://unsplash.com/license), via
   [Picsum Photos](https://picsum.photos)), so the demo looks like a real site, but they're
   standing in for actual screenshots of your own work. Replace them before this goes live. Delete

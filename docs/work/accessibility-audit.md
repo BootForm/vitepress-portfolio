@@ -5,6 +5,9 @@ description: Finding the fixes that actually mattered, not the whole checklist a
 image: /work/accessibility-audit.jpg
 order: 5
 link: https://example.com
+client: Harborview Health
+role: Accessibility audit
+year: 2025
 ---
 
 <script setup>
@@ -21,6 +24,8 @@ const { frontmatter } = useData()
 # An accessibility audit for Harborview Health's patient portal
 
 <p class="lead">{{ frontmatter.description }}</p>
+
+<CaseFacts />
 
 <a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗

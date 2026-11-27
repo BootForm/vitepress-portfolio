@@ -5,6 +5,9 @@ description: Making a five-year-old logo look like it belongs on a bag people ph
 image: /work/coffee-rebrand.jpg
 order: 7
 link: https://example.com
+client: Marrow Coffee Roasters
+role: Brand and packaging
+year: 2025
 ---
 
 <script setup>
@@ -21,6 +24,8 @@ const { frontmatter } = useData()
 # A brand refresh for Marrow Coffee Roasters
 
 <p class="lead">{{ frontmatter.description }}</p>
+
+<CaseFacts />
 
 <a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗

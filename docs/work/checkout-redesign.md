@@ -11,6 +11,12 @@ order: 6
 # CHANGE ME: an external link, "visit the live site" or similar. Delete this line (and the link
 # block below) if there's nothing public to link to.
 link: https://example.com
+# CHANGE ME: `client`, `role` and `year` are all optional. They show as a small facts row under
+# the description (the `<CaseFacts />` line below). Delete any you don't want; delete all three
+# and the row disappears.
+client: Northwind Goods
+role: UX research and design
+year: 2023
 ---
 
 <script setup>
@@ -31,6 +37,8 @@ const { frontmatter } = useData()
 # Redesigning checkout for Northwind Goods
 
 <p class="lead">{{ frontmatter.description }}</p>
+
+<CaseFacts />
 
 <a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗

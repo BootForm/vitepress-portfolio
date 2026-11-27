@@ -7,15 +7,18 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { withBase } from 'vitepress'
 import ProductCard from './components/ProductCard.vue'
+import CaseFacts from './components/CaseFacts.vue'
 import './style.css'
 
 export default {
   extends: DefaultTheme,
   // Registered globally so `<ProductCard>` works directly in markdown (index.md, work/index.md)
   // with no import in either file, the same convention the real bootform.com marketing site
-  // uses for its own reusable components (PricingCards, HomeFeatures, and so on).
+  // uses for its own reusable components (PricingCards, HomeFeatures, and so on). `<CaseFacts />`
+  // is the same idea for each case study page (docs/work/*.md).
   enhanceApp({ app }) {
     app.component('ProductCard', ProductCard)
+    app.component('CaseFacts', CaseFacts)
   },
   Layout: () =>
     h(DefaultTheme.Layout, null, {

@@ -69,7 +69,10 @@ at `npm run dev` both miss it).
   the `prose`-wrapped body, via `frontmatter.image` bound through `useData()` and `withBase()`.
   Its optional `link` frontmatter (an external URL, "visit the live site") renders as a button
   right under the description if present, and is simply omitted (`v-if="frontmatter.link"`) if
-  not; it's an ordinary external absolute URL, so it never needs `withBase()` itself.
+  not; it's an ordinary external absolute URL, so it never needs `withBase()` itself. Its optional
+  `client`, `role` and `year` frontmatter render as a small facts row under the description, via
+  one `<CaseFacts />` line (`CaseFacts.vue`, registered globally next to `ProductCard`), which
+  leaves out any field that isn't set and renders nothing at all if none are.
 - **The site-wide footer is a `theme/index.ts` override, not a `themeConfig.footer` entry**, and
   the logo is one file (`docs/public/logo.svg`) referenced twice by two different mechanisms (the
   header's built-in `logo:` config option, base-prefixed automatically; the footer's own `<img>`,

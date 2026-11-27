@@ -5,6 +5,9 @@ description: Cutting the time from "hungry" to "ordered" on a phone, not a deskt
 image: /work/fleet-checkout.jpg
 order: 3
 link: https://example.com
+client: Fleet
+role: UX and interaction design
+year: 2024
 ---
 
 <script setup>
@@ -21,6 +24,8 @@ const { frontmatter } = useData()
 # Redesigning checkout for Fleet, a food delivery app
 
 <p class="lead">{{ frontmatter.description }}</p>
+
+<CaseFacts />
 
 <a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗

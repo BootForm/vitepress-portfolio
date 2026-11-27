@@ -5,6 +5,9 @@ description: Turning a spreadsheet nobody trusted into a dashboard the whole tea
 image: /work/game-studio-dashboard.jpg
 order: 4
 link: https://example.com
+client: Lanternwick Games
+role: Dashboard design and front end
+year: 2023
 ---
 
 <script setup>
@@ -21,6 +24,8 @@ const { frontmatter } = useData()
 # An analytics dashboard for an indie game studio
 
 <p class="lead">{{ frontmatter.description }}</p>
+
+<CaseFacts />
 
 <a v-if="frontmatter.link" :href="frontmatter.link" target="_blank" rel="noopener" class="not-prose inline-block rounded-md bg-brand-500 px-4 py-2 text-sm font-medium text-white! no-underline hover:bg-brand-600">
   Visit the live site ↗
